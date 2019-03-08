@@ -24,8 +24,9 @@ class MainActivity : AppCompatActivity() {
         var infoArma = findViewById<View>(R.id.infoArma) as ScrollView
         btnTest.setOnClickListener{
             val dt= DataRest()
-            val data = dt.getWarframe("weapons/search/ack%20&%20brunt")
+            val data = dt.getWarframe(buscarArma.text.toString())
             println(data)
+
         }
     }
 
