@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         var btnTest = findViewById<View>(R.id.btnTest) as Button
         //un campo donde se visualizará toda la información acerca del arma escrita
         var infoArma = findViewById<View>(R.id.infoArma) as TextView
+        var infoMercado= findViewById<View>(R.id.infoMercado) as TextView
         btnTest.setOnClickListener{
             var client= AsyncHttpClient()
             /**
@@ -41,14 +42,16 @@ class MainActivity : AppCompatActivity() {
                     // called when response HTTP status is "200 OK"
                     val itemData = response.toString()
                     if(itemData != "") {
-                        var showData = JSONObject()
+                        var showData = ""
                         val arrayJson = JSONArray(itemData)
                         for(i in 0 until arrayJson.length() step 1){
                             if(arrayJson.getJSONObject(i).getString("name").toLowerCase() == buscarArma.text.toString().toLowerCase()){
-                                showData = arrayJson.getJSONObject(i)
+                                showData="Nombre : "+arrayJson.getJSONObject(i).getString("name")
+                                showData=showData+"\nrecarga : "+arrayJson.getJSONObject(i).getDouble("reloadTime")
+                                showData=showData+"\ndescription : "+arrayJson.getJSONObject(i).getString("description")
                             }
                         }
-                        infoArma.text = showData.toString()
+                        infoArma.text = showData
                     }
                 }
 
@@ -69,8 +72,9 @@ class MainActivity : AppCompatActivity() {
             /**
              * MarketItem
              */
-            client= AsyncHttpClient()
-            client.get(Config.warframe+generatePaths(buscarArma.text.toString(),1),object: JsonHttpResponseHandler(){
+            println("Url : "+Config.warframeMarket+generatePaths(buscarArma.text.toString(),1))
+            var client2= AsyncHttpClient()
+            client2.get(Config.warframeMarket+generatePaths(buscarArma.text.toString(),1),object: JsonHttpResponseHandler(){
                 override fun onStart() {
                     // called before request is started
                     //println("Start Request")
@@ -78,18 +82,12 @@ class MainActivity : AppCompatActivity() {
                 override fun onSuccess(statusCode: Int, headers: Array<Header>, response: JSONArray) {
                     // called when response HTTP status is "200 OK"
                     val itemData = response.toString()
-                    /**
+                    println("Test" +itemData)
                     if(itemData != "") {
-                        var showData = JSONObject()
-                        val arrayJson = JSONArray(itemData)
-                        for(i in 0 until arrayJson.length() step 1){
-                            if(arrayJson.getJSONObject(i).getString("name").toLowerCase() == buscarArma.text.toString().toLowerCase()){
-                                showData = arrayJson.getJSONObject(i)
-                            }
-                        }
-                        infoArma.text = showData.toString()
+                        val arrayJson = JSONObject(itemData).getJSONObject("payload").getJSONArray("orders  ")
+                        println(arrayJson.length())
+                        infoMercado.text = "Actualmente existen : "+arrayJson.length()+" Propuestas de compra"
                     }
-                    **/
                 }
 
                 override fun onFailure(
