@@ -1,4 +1,4 @@
-package com.granda.warframekotlin
+package com.granda.warframekotlin.core
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
+import com.granda.warframekotlin.R
 import com.granda.warframekotlin.rest.DataRest
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +24,7 @@ class MainActivity : AppCompatActivity() {
         btnTest.setOnClickListener{
             val dt= DataRest()
             val data = dt.getWarframe(buscarArma.text.toString())
-            println(data)
-
+            print(data)
         }
     }
 
