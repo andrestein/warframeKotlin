@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         var btnTest = findViewById<View>(R.id.btnTest) as Button
         //un campo donde se visualizará toda la información acerca del arma escrita
         var infoArma = findViewById<View>(R.id.infoArma) as TextView
+        var infoMercado = findViewById<View>(R.id.infoMercado) as TextView
         btnTest.setOnClickListener{
             val dt= DataRest()
             val data = dt.getWarframe(buscarArma.text.toString())
