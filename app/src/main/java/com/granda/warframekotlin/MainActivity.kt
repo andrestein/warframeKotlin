@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         val arrayJson = JSONArray(itemData)
                         for(i in 0 until arrayJson.length() step 1){
                             if(arrayJson.getJSONObject(i).getString("name").toLowerCase() == buscarArma.text.toString().toLowerCase()){
-                                showData = arrayJson.getJSONObject(i).
+                                showData = arrayJson.getJSONObject(i)
                             }
                         }
                         infoArma.text = showData.toString()
