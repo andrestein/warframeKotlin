@@ -1,10 +1,12 @@
-package com.granda.warframekotlin.core
+package com.granda.warframekotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ScrollView
+import android.widget.TextView
 import com.granda.warframekotlin.R
 import com.granda.warframekotlin.rest.DataRest
 
@@ -14,8 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // este componenete va a consumir  https://api.warframestat.us/weapons/search/
+        // se va a encargar de recibir un dato en el cual lo va  aconsulta en la api consumida
         var buscarArma = findViewById<View>(R.id.buscarArma) as EditText
+        // boton que permitirá buscar el dato escrito en el campo de texto
         var btnTest = findViewById<View>(R.id.btnTest) as Button
+        //un campo donde se visualizará toda la información acerca del arma escrita
+        var infoArma = findViewById<View>(R.id.infoArma) as ScrollView
         btnTest.setOnClickListener{
             val dt= DataRest()
             val data = dt.getWarframe("weapons/search/ack%20&%20brunt")
