@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         var btnTest = findViewById<View>(R.id.btnTest) as Button
         btnTest.setOnClickListener{
             val dt= DataRest()
-            dt.getWarframe("weapons")
+            val data = dt.getWarframe("weapons/search/ack%20&%20brunt")
+            println(data)
         }
     }
 

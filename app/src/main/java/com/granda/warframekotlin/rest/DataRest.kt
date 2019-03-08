@@ -1,29 +1,27 @@
 package com.granda.warframekotlin.rest
 
 import com.granda.warframekotlin.util.Config
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.JsonHttpResponseHandler
+import cz.msebera.android.httpclient.Header
+import org.json.JSONArray
 
 class DataRest {
-    fun getWarframe(path: String) {
-        val mURL = URL(Config.warframe+path);
-        with(mURL.openConnection() as HttpURLConnection) {
-            // optional default is GET
-            requestMethod = "GET"
-            println("URL : $url")
-            println("Response Code : $responseCode")
-            BufferedReader(InputStreamReader(inputStream)).use {
-                val response = StringBuffer()
-                var inputLine = it.readLine()
-                while (inputLine != null) {
-                    response.append(inputLine)
-                    inputLine = it.readLine()
-                }
-                it.close()
-                println("Response : $response")
+    fun getWarframe(path: String): String {
+        val client= AsyncHttpClient()
+        var data = ""
+        client.get(Config.warframe+path,object:JsonHttpResponseHandler(){
+            override fun onStart() {
+                // called before request is started
+                println("Empieza")
             }
-        }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>, response: JSONArray) {
+                // called when response HTTP status is "200 OK"
+                data = response.toString()
+            }
+        })
+        return data
     }
+
 }
