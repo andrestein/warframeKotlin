@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
+import android.widget.TextView
 import com.granda.warframekotlin.rest.DataRest
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         // boton que permitirá buscar el dato escrito en el campo de texto
         var btnTest = findViewById<View>(R.id.btnTest) as Button
         //un campo donde se visualizará toda la información acerca del arma escrita
-        var infoArma = findViewById<View>(R.id.infoArma) as ScrollView
+        var infoArma = findViewById<View>(R.id.infoArma) as TextView
         btnTest.setOnClickListener{
             val dt= DataRest()
             val data = dt.getWarframe(buscarArma.text.toString())
