@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ScrollView
-import android.widget.TextView
-import com.granda.warframekotlin.R
 import com.granda.warframekotlin.rest.DataRest
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // este componenete va a consumir  https://api.warframestat.us/weapons/search/
+        // este componenete va a consumir  https://api.warframestat.us/weapons/search/ act
         // se va a encargar de recibir un dato en el cual lo va  aconsulta en la api consumida
         var buscarArma = findViewById<View>(R.id.buscarArma) as EditText
         // boton que permitirá buscar el dato escrito en el campo de texto
