@@ -7,23 +7,32 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity" android:background="@drawable/background">
 
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:ems="10"
-            tools:layout_editor_absoluteY="31dp" tools:layout_editor_absoluteX="99dp" android:id="@+id/buscarArma"/>
-    <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="120dp"
-            tools:layout_editor_absoluteX="161dp" android:id="@+id/btnTest"/>
-    <ScrollView
+    <TableLayout
             android:layout_width="395dp"
-            android:layout_height="547dp" tools:layout_editor_absoluteY="176dp" tools:layout_editor_absoluteX="8dp"
-            android:id="@+id/infoArma">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical"/>
-    </ScrollView>
+            android:layout_height="714dp" tools:layout_editor_absoluteX="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow android:layout_width="wrap_content" android:layout_height="114dp" android:layout_margin="50dp">
+            <EditText
+                    android:inputType="textPersonName"
+                    android:text="Name"
+                    android:ems="10"
+                    tools:layout_editor_absoluteY="85dp" tools:layout_editor_absoluteX="99dp"
+                    android:id="@+id/buscarArma"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button
+                    android:text="Buscar"
+                    android:layout_width="385dp"
+                    android:layout_height="wrap_content" tools:layout_editor_absoluteY="199dp"
+                    tools:layout_editor_absoluteX="161dp" android:id="@+id/btnTest"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="514dp" android:id="@+id/infoArma"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </TableLayout>
 </android.support.constraint.ConstraintLayout>
